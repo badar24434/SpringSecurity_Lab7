@@ -16,16 +16,10 @@ This is a demo project for Spring Security using Spring Boot.
    cd Spring_Lab7
    ```
 
-2. **Build the project**:
-
-   ```
-   mvn clean install
-   ```
-
 3. **Run the application**:
 
    ```
-   mvn spring-boot:run
+   Run the SpringSecurityDemoApplication file
    ```
 
    Or, run the generated jar:
