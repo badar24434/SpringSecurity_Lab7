@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{layout/main-layout :: layout('Home', ~{::div})}">
+<body>
+    <div>
+        <div class="content-container">
+            <h2>Welcome to Spring Security Demo</h2>
+            
+            <!-- Only show user information for authenticated users -->
+            <div sec:authorize="isAuthenticated()" class="user-info">
+                <h4>User Information</h4>
+                <p><strong>Username:</strong> <span sec:authentication="name">Username</span></p>
+                <p><strong>Roles:</strong> <span sec:authentication="authorities">Roles</span></p>
+                <p><strong>Login Time:</strong> <span id="loginTime">Just now</span></p>
+            </div>
+            
+            <!-- Message for anonymous users -->
+            <div sec:authorize="isAnonymous()" class="alert alert-info">
+                <p>You are not logged in. <a th:href="@{/login}" class="alert-link">Login here</a> to see protected content.</p>
+            </div>
+            
+            <div class="row mt-4">
+                <!-- Protected card only for authenticated users -->
+                <div sec:authorize="isAuthenticated()" class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Protected Resource</h5>
+                            <p class="card-text">This secured resource is only visible to authenticated users.</p>
+                            <button id="toggleThemeBtn" class="btn">Toggle Theme</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Only show logout for authenticated users -->
+            <div sec:authorize="isAuthenticated()" class="mt-4">
+                <form th:action="@{/logout}" method="post">
+                    <button type="submit" class="btn">Logout</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
