@@ -19,7 +19,7 @@ This is a demo project for Spring Security using Spring Boot.
 3. **Run the application**:
 
    ```
-   Run the SpringSecurityDemoApplication file
+   Run the SpringSecurityDemoApplication.java file
    ```
 
    Or, run the generated jar:
